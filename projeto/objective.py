@@ -6,7 +6,7 @@ from copy import copy
 
 class RCPSP_RandomKeyRepresentation(Problem):
     def __init__(self, graph: dict, times_dict: dict, r_cap_dict={}, r_cons_dict={}, r_count=None, act_pre=None):
-        self.graph = graph
+        self.graph = khan(graph)
         self.all_tasks = khan(graph)
         self.times_dict = times_dict
         self.r_cap_dict = r_cap_dict
@@ -46,13 +46,12 @@ class RCPSP_RandomKeyRepresentation(Problem):
             #FIM Serial SGS para todos os individuos
             restrictions[count][0] = check_if_solution_feasible(solution, self.times_dict, self.r_cap_dict, self.r_count, self.r_cons_dict, self.act_pre)
             count+=1
-            print(solution)
-            print(resource_usages_in_time)
-            import time; time.sleep(50)
-        
-        print(min(makespans))
-        print(indvs_after_sgs[makespans.index(min(makespans))])
-
+        # print("oi")
+        # print(min(makespans))
+        # print(indvs_after_sgs[makespans.index(min(makespans))])
+        # print(resource_usages_in_time)
+        # time.sleep(40)
+        # print(restrictions)
         out["F"] = np.array(makespans)
         out["G"] = np.array(restrictions)
 
